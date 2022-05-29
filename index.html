@@ -22,11 +22,17 @@
     <a href="https://unsplash.com/@rogovca">Rogovca</a> on<a href="https://unsplash.com/">Unsplash</a>
 </div>
 </div>
-
-<div class="form">  
+<div class="container">
+<div class="fillertext">
+    <p>This is not a real online service! You know you need something like this in your life to help you realize
+your deepest dreams. Sign up now to get started.</p>
+ <p>You <em>know</em> you want to.</p>
+<br>
+</div> 
+   
+<div class="form">
 <form>
-    
-    <p class="formheader">Let's do this!</p>
+    <p class="headertextform">Let's do this!</p>
 <div class="inputform">
     <div class="first">
     <label for="fname">FIRST NAME</label>
@@ -51,17 +57,36 @@
     <div class="inputform">
         <div class="password">
     <label for="password">PASSWORD</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" class="error" onkeyup="samePassword()">
+    <span class="passnotmatch">*Passwords do not match</span>
     </div>
     <div class="confirm">
     <label for="confirm">CONFIRM PASSWORD</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="confirm" id="confirm" class="error" onkeyup="samePassword()">
     </div>
 </div>
+<input type="submit" value="Create Account" class="submit">
 </form>
+
 </div>
-
-
-
+<div class="account">
+    <p>Already have an account? <span class="login">Log in</span></p>
+</div>
+</div>
 </body>
+<script>
+    const password = document.querySelector('#password')
+    const confirm = document.querySelector('#confirm')
+    const passnotmatch = document.querySelector('.passnotmatch')
+    const samePassword = () => {
+        if (password.value === confirm.value) {
+            confirm.style.border = password.style.border = '#e5e7eb 1.5px solid'
+            passnotmatch.style.display = 'none'
+        }
+        else {
+            confirm.style.border = password.style.border = '1.5px solid #cf3333'
+            passnotmatch.style.display = 'inline'
+        }
+    }
+</script>
 </html>
